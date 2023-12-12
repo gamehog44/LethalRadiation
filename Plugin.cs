@@ -1,5 +1,4 @@
 ﻿using BepInEx;
-using BepInEx.Logging;
 using HarmonyLib;
 using LethalRadiation.Patches;
 
@@ -9,11 +8,12 @@ namespace LethalRadiation
     [BepInProcess("Lethal Company.exe")]
     public class Plugin : BaseUnityPlugin
     {
+        public static BaseUnityPlugin Instance { get; private set; }
+
         private readonly Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);
 
-        public static BaseUnityPlugin Instance { get; private set; }
-        public static ManualLogSource PluginLogger { get; private set; }
-        public static int CurrentRadiationLevel = 1;
+        public static int CurrentDamageAmount;
+        public static float CurrentBlurAmount;
         public static bool IsLungDocked = true;
 
         private void Awake()
@@ -21,15 +21,21 @@ namespace LethalRadiation
             if (Instance == null)
                 Instance = this;
 
+            LRConfig.Setup();
+
+            CurrentDamageAmount = LRConfig.BaseDamage.Value;
+            CurrentBlurAmount = LRConfig.BaseBlur.Value;
+
             harmony.PatchAll(typeof(ElevatorAnimationEventsPatch));
             harmony.PatchAll(typeof(EntranceTeleportPatch));
             harmony.PatchAll(typeof(LungPropPatch));
-            harmony.PatchAll(typeof(PlayerControllerBPatch));
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(TimeOfDayPatch));
 
-            PluginLogger = Logger;
-            PluginLogger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            if (LRConfig.BlurEnabled.Value)
+                harmony.PatchAll(typeof(PlayerControllerBPatch));
+
+            Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
     }
 }

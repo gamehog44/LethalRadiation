@@ -11,7 +11,7 @@ namespace LethalRadiation.Patches
         private static void Update(ref PlayerControllerB __instance)
         {
             if (!__instance.isPlayerDead && __instance.isPlayerControlled && !Plugin.IsLungDocked && __instance.isInsideFactory)
-                __instance.drunkness = Plugin.CurrentRadiationLevel * 0.02f;
+                __instance.drunkness = Plugin.CurrentBlurAmount;
             else
                 __instance.drunkness = 0.0f;
         }

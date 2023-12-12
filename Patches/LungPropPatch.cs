@@ -8,7 +8,7 @@ namespace LethalRadiation.Patches
 
         [HarmonyPatch("EquipItem")]
         [HarmonyPrefix]
-        private static void EquipItemPatch(ref LungProp __instance, ref bool ___isLungDocked)
+        private static void EquipItemPatch(ref bool ___isLungDocked)
         {
             if (___isLungDocked)
                 Plugin.IsLungDocked = false;

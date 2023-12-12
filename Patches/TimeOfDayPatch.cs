@@ -10,17 +10,20 @@ namespace LethalRadiation.Patches
         [HarmonyPostfix]
         private static void OnHourChangedPatch(int amount)
         {
-            Debug.Log($"Hour changed, Lung Docked: {Plugin.IsLungDocked}, Rad Level: {Plugin.CurrentRadiationLevel}");
-            if (GameNetworkManager.Instance == null || Plugin.IsLungDocked)
+            Debug.Log($"Hour changed, docked? {Plugin.IsLungDocked}");
+            if (Plugin.IsLungDocked)
                 return;
 
-            if (!GameNetworkManager.Instance.localPlayerController.isPlayerDead &&
+            if (LRConfig.DamageEnabled.Value &&
+                GameNetworkManager.Instance != null &&
+                !GameNetworkManager.Instance.localPlayerController.isPlayerDead &&
                 GameNetworkManager.Instance.localPlayerController.isPlayerControlled &&
                 GameNetworkManager.Instance.localPlayerController.isInsideFactory &&
                 !Plugin.IsLungDocked)
-                    GameNetworkManager.Instance.localPlayerController.DamagePlayer(10 * Plugin.CurrentRadiationLevel, false);
+                GameNetworkManager.Instance.localPlayerController.DamagePlayer(Plugin.CurrentDamageAmount, false);
 
-            Plugin.CurrentRadiationLevel++;
+            Plugin.CurrentDamageAmount += LRConfig.DamageInterval.Value;
+            Plugin.CurrentBlurAmount += LRConfig.BlurInterval.Value;
         }
     }
 }

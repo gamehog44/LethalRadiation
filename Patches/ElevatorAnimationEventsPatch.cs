@@ -12,7 +12,8 @@ namespace LethalRadiation.Patches
         {
             Debug.Log("Ship Leaving");
             Plugin.IsLungDocked = true;
-            Plugin.CurrentRadiationLevel = 1;
+            Plugin.CurrentDamageAmount = LRConfig.BaseDamage.Value;
+            Plugin.CurrentBlurAmount = LRConfig.BaseBlur.Value;
         }
     }
 }
