@@ -1,4 +1,4 @@
-# LethalRadiation 1.1.0
+# LethalRadiation 1.1.1
 A mod for Lethal Company that adds repercussions to removing the apparatus from the factory.
 
 Download from [ThunderStore](https://thunderstore.io/c/lethal-company/p/gamehog44/LethalRadiation/) or [Releases](https://github.com/gamehog44/LethalRadiation/releases/latest)
@@ -8,4 +8,4 @@ Download from [ThunderStore](https://thunderstore.io/c/lethal-company/p/gamehog4
 - Screen blur inside the factory which gets worse the more radiation is present.
 - A notification on entrance doors to let players know that radiation is present inside the building.
 ***
-Join our [Discord](https://discord.com/invite/fsXcFV3)!
+For pre-releases and bug discussions join our [Discord](https://discord.com/invite/fsXcFV3)!

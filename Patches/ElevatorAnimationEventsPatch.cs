@@ -14,6 +14,7 @@ namespace LethalRadiation.Patches
             Plugin.IsLungDocked = true;
             Plugin.CurrentDamageAmount = LRConfig.BaseDamage.Value;
             Plugin.CurrentBlurAmount = LRConfig.BaseBlur.Value;
+            Plugin.CurrentHour = 0;
         }
     }
 }

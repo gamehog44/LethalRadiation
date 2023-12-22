@@ -10,10 +10,8 @@ namespace LethalRadiation.Patches
         [HarmonyPostfix]
         private static void Update(ref PlayerControllerB __instance)
         {
-            if (!__instance.isPlayerDead && __instance.isPlayerControlled && !Plugin.IsLungDocked && __instance.isInsideFactory)
+            if (!__instance.isPlayerDead && __instance.isPlayerControlled && !Plugin.IsLungDocked && __instance.isInsideFactory && __instance.drunkness <= Plugin.CurrentBlurAmount)
                 __instance.drunkness = Plugin.CurrentBlurAmount;
-            else
-                __instance.drunkness = 0.0f;
         }
     }
 }
