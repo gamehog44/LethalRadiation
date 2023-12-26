@@ -1,16 +1,14 @@
 ﻿using HarmonyLib;
-using UnityEngine;
 
 namespace LethalRadiation.Patches
 {
-    [HarmonyPatch(typeof(ElevatorAnimationEvents))]
-    internal class ElevatorAnimationEventsPatch
+    [HarmonyPatch(typeof(StartMatchLever))]
+    internal class StartMatchLeverPatch
     {
-        [HarmonyPatch("ElevatorFullyRunning")]
+        [HarmonyPatch("PullLever")]
         [HarmonyPostfix]
-        private static void ElevatorFullyRunningPatch()
+        private static void PullLeverPatch()
         {
-            Debug.Log("Ship Leaving");
             Plugin.IsLungDocked = true;
             Plugin.CurrentDamageAmount = LRConfig.BaseDamage.Value;
             Plugin.CurrentBlurAmount = LRConfig.BaseBlur.Value;

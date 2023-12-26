@@ -14,6 +14,9 @@ namespace LethalRadiation
         public static ConfigEntry<float> BaseBlur;
         public static ConfigEntry<float> BlurInterval;
 
+        // Apparatus
+        public static ConfigEntry<int> ApparatusValue;
+
         public static void Setup()
         {
             // Damage
@@ -25,6 +28,9 @@ namespace LethalRadiation
             BlurEnabled = Plugin.Instance.Config.Bind("Screen Blur", "Enable", true, "Determine if radiation should cause a player's screen to get blurry while in the building");
             BaseBlur = Plugin.Instance.Config.Bind("Screen Blur", "BaseAmount", 0.02f, "The starting amount of screen blur radiation will cause before it is increased");
             BlurInterval = Plugin.Instance.Config.Bind("Screen Blur", "BlurIncreaseAmount", 0.02f, "How much screen blur gets worse by at the top of each hour");
+
+            // Apparatus
+            ApparatusValue = Plugin.Instance.Config.Bind("Apparatus", "Value", 80, "The scrap value of the apparatus");
         }
     }
 }
