@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using UnityEngine;
 
 namespace LethalRadiation.Patches
 {
@@ -21,9 +22,6 @@ namespace LethalRadiation.Patches
             }
             else
             {
-                if (!radiationPresentLastCheck && !___enemyNearLastCheck)
-                    return;
-
                 radiationPresentLastCheck = false;
                 ___triggerScript.hoverTip = "Enter: [LMB]";
             }
