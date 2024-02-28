@@ -15,6 +15,7 @@ namespace LethalRadiation
         public static ConfigEntry<float> BlurInterval;
 
         // Apparatus
+        public static ConfigEntry<bool> OverrideApparatusValue;
         public static ConfigEntry<int> ApparatusValue;
 
         public static void Setup()
@@ -30,7 +31,8 @@ namespace LethalRadiation
             BlurInterval = Plugin.Instance.Config.Bind("Screen Blur", "BlurIncreaseAmount", 0.02f, "How much screen blur gets worse by at the top of each hour");
 
             // Apparatus
-            ApparatusValue = Plugin.Instance.Config.Bind("Apparatus", "Value", 80, "The scrap value of the apparatus");
+            OverrideApparatusValue = Plugin.Instance.Config.Bind("Apparatus", "OverrideApparatusValue", false, "Determines if the value of the apparatus should be overrided by the Value variable below");
+            ApparatusValue = Plugin.Instance.Config.Bind("Apparatus", "Value", 80, "The scrap value of the apparatus. [NOTE] Will not work if OverrideApparatusValue is set to false");
         }
     }
 }

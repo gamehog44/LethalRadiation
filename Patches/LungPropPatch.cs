@@ -9,7 +9,8 @@ namespace LethalRadiation.Patches
         [HarmonyPostfix]
         private static void StartPatch(LungProp __instance)
         {
-            __instance.scrapValue = LRConfig.ApparatusValue.Value;
+            if (LRConfig.OverrideApparatusValue.Value)
+                __instance.scrapValue = LRConfig.ApparatusValue.Value;
         }
 
         [HarmonyPatch("EquipItem")]
