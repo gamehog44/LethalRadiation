@@ -1,4 +1,4 @@
-# LethalRadiation 1.2.1
+# LethalRadiation 1.2.2
 A mod for Lethal Company that adds repercussions to removing the apparatus from the factory.
 
 Download from [ThunderStore](https://thunderstore.io/c/lethal-company/p/gamehog44/LethalRadiation/) or [Releases](https://github.com/gamehog44/LethalRadiation/releases/latest)
